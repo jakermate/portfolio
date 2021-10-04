@@ -1,0 +1,23 @@
+{
+    "name": "Jake Miller",
+    "location": "Bay Area, California",
+    "title": "Web Developer",
+    "interests": [
+        "coding",
+        "gaming",
+        "cars"
+    ],
+    "skills": [
+        "Javascript",
+        "HTML5",
+        "CSS",
+        "Linux/MacOs",
+        "Bash",
+        "ReactJS",
+        "Git/Github",
+        "ExpressJS",
+        "NodeJS",
+        "MySQL",
+        "Nginx"
+    ]
+}

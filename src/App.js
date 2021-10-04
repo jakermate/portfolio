@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import "./scss/index.scss";
+import Splash from "./components/Splash";
+import Slider from "react-awesome-slider";
+import "react-awesome-slider/dist/styles.css";
+import About from "./components/About";
+import { useEffect, useState } from "react";
+import $ from "jquery";
+import Page from "./components/Page";
+import Nav from "./components/Nav";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [basicInfo, setBasicInfo] = useState();
+  useEffect(() => {
+    getBasicInfo();
+  }, []);
+  const getBasicInfo = () => {
+    $.getJSON("basicInfo.json").then((basicInfoObj) =>
+      setBasicInfo(basicInfoObj)
+    );
+  };
+  // Slider component
+  const slider = (
+    <Slider bullets={false} fillParent>
+      <Page>
+        <Splash basicinfo={basicInfo}></Splash>
+      </Page>
+      <Page>
+      <About basicinfo={basicInfo}></About>
+
+      </Page>
+    </Slider>
   );
+  return <div className="App" style={{height: '100vh'}}>
+    <Nav></Nav>
+    {slider}
+    </div>;
 }
 
 export default App;
