@@ -5,7 +5,7 @@ export default function Nav(props) {
     <div className="nav">
       <div id="nav-wrapper">
         <div id="nav-branding"></div>
-        <nav id="nav-navigation" className="text-xl font-bold">
+        <nav id="nav-navigation" className="text-base md:text-xl font-bold">
           <a href="">Home</a>
           <a href="">About</a>
           <a href="">Work</a>

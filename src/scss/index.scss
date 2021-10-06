@@ -5,3 +5,64 @@
 .super-pad{
     padding: 30px;
 }
+
+//  scroll animation
+.icon-scroll,
+.icon-scroll:before {
+    position: absolute;
+    left: 50%;
+}
+.icon-scroll {
+    width: 30px;
+    height: 50px;
+    margin-left: -20px;
+    bottom: 10%;
+    margin-top: -35px;
+    border: 2px solid #fff;
+    border-radius: 25px
+}
+@media (max-width: 767px) {
+    .icon-scroll {
+        position: relative
+    }
+}
+.icon-scroll:before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    margin-left: -4px;
+    top: 8px;
+    border-radius: 4px;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-name: scroll
+}
+@keyframes scroll {
+    0% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(26px)
+    }
+}
+
+// pages
+.slider_page{
+    height: 100vh;
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+   
+}
+.full_height_section{
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,7 +1,10 @@
 {
     "name": "Jake Miller",
+    "title": "Jake Miller - Web Developer",
     "location": "Bay Area, California",
-    "title": "Web Developer",
+    "subtitle": "Web Developer",
+    "description": "Web developer with front-end and back-end expertise. ReactJS, NodeJS, and more.",
+    "image": "https://i.imgur.com/lotL3vu.jpeg",
     "interests": [
         "coding",
         "gaming",
