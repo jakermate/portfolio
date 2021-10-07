@@ -1,6 +1,8 @@
 import "./App.css";
 import "./scss/index.scss";
 import Splash from "./components/Splash";
+import Work from "./components/Work";
+import Contact from "./components/Contact";
 import Slider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 import About from "./components/About";
@@ -9,6 +11,7 @@ import $ from "jquery";
 import Nav from "./components/Nav";
 import { Helmet } from "react-helmet";
 function App() {
+  // load user specific data
   const [basicInfo, setBasicInfo] = useState();
   useEffect(() => {
     getBasicInfo();
@@ -18,24 +21,57 @@ function App() {
       setBasicInfo(basicInfoObj)
     );
   };
+  // location map
+  const locationMap = [
+    {
+      title: "Home",
+      path: '/',
+      icon: '',
+      component: <Splash basicinfo={basicInfo}></Splash>,
+      background: 'rgb(35,42,52)'
+    },
+    {
+      title: "About",
+      path: '/about',
+      icon: '',
+      component: <About basicinfo={basicInfo}></About>,
+      background: 'rgb(58, 70, 171)'
+    },
+    {
+      title: "Work",
+      path: '/work',
+      icon: '',
+      component: <Work basicinfo={basicInfo}></Work>,
+      background: 'rgb(35,42,52)'
+    },
+    {
+      title: "Contact",
+      path: '/contact',
+      icon: '',
+      component: <Contact basicinfo={basicInfo}></Contact>,
+      background: 'rgb(58, 70, 171)'
+    }
+  ]
   // Slider component
   const slider = (
     <Slider bullets={false} fillParent>
-      <div className="slider_page" style={{background: 'rgb(35, 42, 52)'}}>
-        <Splash basicinfo={basicInfo}></Splash>
-      </div>
-      <div className="slider_page" style={{background: 'rgb(58, 70, 171)'}}>
-        <About basicinfo={basicInfo}></About>
-      </div>
-      <div style={{background: '#3061ab'}}>
-        
-      </div>
+      {
+        locationMap.map((locationObj, index) => {
+          return (
+            <div id={`${locationObj.title}_section`} className="slider_page" style={{
+              background: locationObj.background
+            }}>
+              {locationObj.component}
+            </div>
+          )
+        })
+      }
 
     </Slider>
   );
   return (
     <div className="App" style={{ height: "100vh" }}>
-      <Nav></Nav>
+      <Nav locationMap={locationMap}></Nav>
       {basicInfo && (
         <Helmet>
           <title>{basicInfo.title}</title>

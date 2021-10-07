@@ -34,9 +34,10 @@ export default function Splash(props) {
           <MacWindow>
             <div className="text-left px-4">
               <p className="text-red-600 font-bold">I'M A</p>
+              <span className="text-xl"> > </span>
               <Typical
                 className="font-mono text-xl md:text-2xl font-thin"
-                wrapper="p"
+                wrapper="span"
                 loop={50}
                 steps={subtitleSteps
                   .map((title) => [title.toUpperCase(), 1800])

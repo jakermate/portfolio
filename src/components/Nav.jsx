@@ -6,9 +6,13 @@ export default function Nav(props) {
       <div id="nav-wrapper">
         <div id="nav-branding"></div>
         <nav id="nav-navigation" className="text-base md:text-xl font-bold">
-          <a href="">Home</a>
-          <a href="">About</a>
-          <a href="">Work</a>
+          {
+            props.locationMap.map((locationObj, index) => {
+              return (
+                <a href={locationObj.path}>{locationObj.title}</a>
+              )
+            })
+          }
         </nav>
       </div>
     </div>
