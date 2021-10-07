@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import $ from "jquery";
 import Nav from "./components/Nav";
 import { Helmet } from "react-helmet";
+import Theme from "./components/Theme";
+
 function App() {
   // load user specific data
   const [basicInfo, setBasicInfo] = useState();
@@ -28,14 +30,14 @@ function App() {
       path: '/',
       icon: '',
       component: <Splash basicinfo={basicInfo}></Splash>,
-      background: 'rgb(35,42,52)'
+      background: 'bg-base-300'
     },
     {
       title: "About",
       path: '/about',
       icon: '',
       component: <About basicinfo={basicInfo}></About>,
-      background: 'rgb(58, 70, 171)'
+      background: 'bg-neutral'
     },
     {
       title: "Work",
@@ -58,8 +60,7 @@ function App() {
       {
         locationMap.map((locationObj, index) => {
           return (
-            <div id={`${locationObj.title}_section`} className="slider_page" style={{
-              background: locationObj.background
+            <div id={`${locationObj.title}_section`} className={`slider_page ${locationObj.background}`} style={{
             }}>
               {locationObj.component}
             </div>
@@ -88,6 +89,8 @@ function App() {
       )}
 
       {slider}
+      <Theme></Theme>
+
     </div>
   );
 }

@@ -3,10 +3,10 @@ import Typical from "react-typical";
 import MacWindow from "./MacWindow";
 
 const subtitleSteps = [
-  "Front-end Developer",
-  "Back-end Developer",
-  "Linux Admin",
-  "Gamer",
+  "front-end developer",
+  "back-end developer",
+  "linux admin",
+  "gamer",
 ];
 export default function Splash(props) {
   if (!props.basicinfo) return <div></div>;
@@ -20,7 +20,7 @@ export default function Splash(props) {
           position: "relative",
           transition: 10000,
         }}
-        className="flex items-center justify-center text-white"
+        className="flex items-center flex-col justify-center text-white"
       >
         <div className="flex items-center justify-center flex-col">
           <img
@@ -30,21 +30,24 @@ export default function Splash(props) {
             alt=""
             width={200}
           />
-          <h2 className="text-4xl font-bold mb-4 text-white">{myName}</h2>
+          <h2 className="text-4xl font-bold mb-4 text-base-content">{myName}</h2>
           <MacWindow>
             <div className="text-left px-4">
-              <p className="text-red-600 font-bold">I'M A</p>
-              <span className="text-xl"> > </span>
+              <span className="text-xl font-mono text-primary">~{myName.trim().replace(' ', "").toLowerCase()} -&gt; </span>
               <Typical
-                className="font-mono text-xl md:text-2xl font-thin"
+                className=" text-xl md:text-2xl font-thin text-base-content"
                 wrapper="span"
                 loop={50}
                 steps={subtitleSteps
-                  .map((title) => [title.toUpperCase(), 1800])
+                  .map((title) => [title, 1800])
                   .flat()}
               ></Typical>
             </div>
           </MacWindow>
+        </div>
+        <div id="splash_control" className="mt-16">
+          <button className="btn btn-primary shadow-md">About Jake</button>
+          <button class="btn btn-outline btn-secondary ml-4 ">Contact</button>
         </div>
       </header>
     </div>
