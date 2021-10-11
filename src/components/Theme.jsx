@@ -1,8 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 export default function Theme() {
+    useEffect(()=>{
+        setActiveTheme()
+    },[])
     const changeTheme = (e) => {
         document.documentElement.setAttribute('data-theme', e.target.dataset.theme)
+        setActiveTheme()
+    }
+    const setActiveTheme = () => {
+        let theme = document.documentElement.dataset.theme
+        let index = themeMap.map((obj) => obj.string).indexOf(theme)
+        document.querySelectorAll('.active_theme').forEach((el)=> el.classList.remove('active_theme'))
+        document.getElementById(`theme_select_${themeMap[index].string}`).classList.add('active_theme')
     }
     const themeMap = [
         {
@@ -38,7 +48,7 @@ export default function Theme() {
                 themeMap.map((themeobj, indx) => {
                     return(
                         <div className="tooltip" data-tip={themeobj.title} data-theme={themeobj.string}>
-                            <button className="btn btn-primary btn-circle btn-xs mx-2 shadow-md" data-theme={themeobj.string} onClick={(e) => changeTheme(e)}></button>
+                            <button id={`theme_select_${themeobj.string}`} className="btn btn-primary btn-circle btn-xs mx-2 shadow-md theme_button" data-theme={themeobj.string} onClick={(e) => changeTheme(e)}></button>
                         </div>
 
                     )

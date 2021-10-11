@@ -20,9 +20,9 @@ export default function Splash(props) {
           position: "relative",
           transition: 10000,
         }}
-        className="flex items-center flex-col justify-center text-white"
+        className="flex items-center flex-col justify-center text-white min-w-full"
       >
-        <div className="flex items-center justify-center flex-col">
+        <div className="flex items-center justify-center flex-col ">
           <img
             src={
               "https://icongr.am/devicon/github-original.svg?size=128&color=currentColor"
@@ -30,16 +30,16 @@ export default function Splash(props) {
             alt=""
             width={200}
           />
-          <h2 className="text-4xl font-bold mb-4 text-base-content">{myName}</h2>
+          <h2 className="text-4xl font-sans my-12 text-primary"><span className="text-base-content">My name is </span>{myName}</h2>
           <MacWindow>
             <div className="text-left px-4">
-              <span className="text-xl font-mono text-primary">~{myName.trim().replace(' ', "").toLowerCase()} -&gt; </span>
+              <span className="text-sm md:text-xl font-mono text-primary">~{myName.trim().replace(' ', "").toLowerCase()} -&gt; </span>
               <Typical
-                className=" text-xl md:text-2xl font-thin text-base-content"
+                className="text-sm md:text-xl font-mono font-thin text-base-content"
                 wrapper="span"
                 loop={50}
                 steps={subtitleSteps
-                  .map((title) => [title, 1800])
+                  .map((title) => [title, 2800])
                   .flat()}
               ></Typical>
             </div>

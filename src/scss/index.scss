@@ -67,3 +67,22 @@
     align-items: center;
     justify-content: center;
 }
+// theme
+.active_theme{
+    transform: scale(1.2);
+}
+.theme_button{
+    transition: transform .2s;
+
+}
+// nav
+.autoheight{
+    height: auto;
+    // overflow-y: scroll;
+    div{
+        .full_page_section{
+            overflow-y: scroll;
+
+        }
+    }
+}

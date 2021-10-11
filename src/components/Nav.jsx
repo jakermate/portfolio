@@ -1,6 +1,9 @@
 import React from "react";
 import style from "../scss/nav.scss";
+import {Link} from 'react-awesome-slider/dist/navigation'
 export default function Nav(props) {
+  const location = window.location.pathname
+  console.log(location)
   return (
     <div className="nav">
       <div id="nav-wrapper">
@@ -9,7 +12,7 @@ export default function Nav(props) {
           {
             props.locationMap.map((locationObj, index) => {
               return (
-                <a href={locationObj.path}>{locationObj.title}</a>
+                <button className="mx-3 px-3" key={`nav-${index}`} onClick={e => props.navigateTo(index)} >{locationObj.title}</button>
               )
             })
           }

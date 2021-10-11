@@ -3,7 +3,7 @@ import {MacTerminal} from 'react-window-ui'
 export default function MacWindow(props) {
     return (
         <MacTerminal style={{
-            minWidth: 300
+            minWidth: '100%'
         }}>
             {props.children}
         </MacTerminal>
