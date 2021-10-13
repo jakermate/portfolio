@@ -5,7 +5,10 @@
 .super-pad{
     padding: 30px;
 }
-
+// links
+a{
+    
+}
 //  scroll animation
 .icon-scroll,
 .icon-scroll:before {
@@ -85,4 +88,8 @@
 
         }
     }
+}
+// svg and icon
+svg{
+    transition: all 1s;
 }

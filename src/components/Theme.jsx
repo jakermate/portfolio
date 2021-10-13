@@ -37,7 +37,7 @@ export default function Theme() {
         },
     ]
     return (
-        <div id="theme_select" className="pb-3" style={{
+        <div id="theme_select" className="pb-8" style={{
             position: 'fixed',
             zIndex: 999,
             bottom: 0,

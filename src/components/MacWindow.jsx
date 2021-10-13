@@ -1,8 +1,9 @@
 import React from 'react'
 import {MacTerminal} from 'react-window-ui'
+import '../scss/mac.scss'
 export default function MacWindow(props) {
     return (
-        <MacTerminal style={{
+        <MacTerminal className="mac_window" style={{
             minWidth: '100%'
         }}>
             {props.children}

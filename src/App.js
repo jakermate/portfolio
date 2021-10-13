@@ -4,13 +4,7 @@ import Splash from "./components/Splash";
 import Work from "./components/Work";
 import Contact from "./components/Contact";
 import Slider from "react-awesome-slider";
-import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
-import {
-  Provider,
-  Link,
-  withNavigationContext,
-  withNavigationHandlers,
-} from "react-awesome-slider/dist/navigation";
+import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import "react-awesome-slider/dist/styles.css";
 import About from "./components/About";
 import { useEffect, useState } from "react";
@@ -18,8 +12,9 @@ import $ from "jquery";
 import Nav from "./components/Nav";
 import { Helmet } from "react-helmet";
 import Theme from "./components/Theme";
+import GithubLink from "./components/GithubLink";
 // nav slider
-const NavSlider = withNavigationHandlers(Slider);
+
 function App() {
   // load user specific data
   const [basicInfo, setBasicInfo] = useState();
@@ -37,7 +32,9 @@ function App() {
       title: "Home",
       path: "home",
       icon: "",
-      component: <Splash basicinfo={basicInfo}></Splash>,
+      component: (
+        <Splash basicinfo={basicInfo} navigateTo={requestNavigation}></Splash>
+      ),
       background: "bg-base-300",
     },
     {
@@ -62,29 +59,38 @@ function App() {
       background: "rgb(58, 70, 171)",
     },
   ];
-  const [selected, setSelected] = useState(0) // navigate with buttons
-  function navigateTo(index){
-    console.log('nav to ' + index)
-    setSelected(index)
-  }
-  useEffect(()=>{
-    let path = locationMap[selected].path
-    window.history.pushState({}, null, path)
-  }, [selected])
-  // Slider component
-  const slider = (
-    <Slider bullets={false} fillParent animation="cubeAnimation" selected={selected}>
-      {
-        locationMap.map((locationObj, index) => {
-          return (
-            <div key={`location_index_${index}`} id={`${locationObj.title}_section`} className={`slider_page ${locationObj.background}`} style={{
-            }}>
-              {locationObj.component}
-            </div>
-          )
-        })
-      }
+  const [page, setPage] = useState(0)
+  const [index1, setIndex] = useState(0)
 
+  function requestNavigation(index) {
+    console.log('request for ' + index)
+    setPage(index);
+  }
+
+
+  const slider = (
+    <Slider
+      bullets={false}
+      fillParent
+      infinite={false}
+      animation="openAnimation"
+      selected={page}
+      onTransitionStart={e => setIndex(e.currentIndex)}
+    >
+      {locationMap.map((locationObj, index) => {
+        return (
+          <div
+            key={`location_index_${index}`}
+            id={`${locationObj.title}_section`}
+            className={`slider_page ${locationObj.background}`}
+            style={{}}
+          >
+          <Nav key={`nav_index_${index}`} index={index}  locationMap={locationMap} navigateTo={requestNavigation}></Nav>
+
+            {locationObj.component}
+          </div>
+        );
+      })}
     </Slider>
   );
   // const slider = (
@@ -106,9 +112,9 @@ function App() {
   // );
   return (
     <div className="App" style={{ height: "100vh" }}>
-        {basicInfo && (
-      <Provider slug={"home"}>
-        <Nav locationMap={locationMap} navigateTo={navigateTo}></Nav>
+      {basicInfo && (
+        <div>
+          <GithubLink />
           <Helmet>
             <title>{basicInfo.title}</title>
             <meta name="description" content={basicInfo.description} />
@@ -125,10 +131,10 @@ function App() {
             <meta property="twitter:image" content={basicInfo.image} />
           </Helmet>
 
-        {slider}
-        <Theme></Theme>
-      </Provider>
-        )}
+          {slider}
+          <Theme></Theme>
+        </div>
+      )}
     </div>
   );
 }

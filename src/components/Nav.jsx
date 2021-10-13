@@ -1,23 +1,35 @@
-import React from "react";
 import style from "../scss/nav.scss";
-import {Link} from 'react-awesome-slider/dist/navigation'
+import { useSpring, animated } from 'react-spring'
+import { useEffect } from "react";
 export default function Nav(props) {
-  const location = window.location.pathname
-  console.log(location)
+  const anime = useSpring({
+    from:{
+      transform: 'translateY(-200px)',
+      opacity: 0
+    },
+    to:{
+      transform: 'translateY(0)',
+      opacity: 1
+    },
+    delay: 300
+  })
+  useEffect(()=>{
+    console.log('nav mounted')
+  },[])
   return (
-    <div className="nav">
+    <animated.div className="nav relative" style={anime}>
       <div id="nav-wrapper">
         <div id="nav-branding"></div>
-        <nav id="nav-navigation" className="text-base md:text-xl font-bold text-base-content">
+        <nav id="nav-navigation" className="text-sm md:text-xl font-bolder text-base-content">
           {
             props.locationMap.map((locationObj, index) => {
               return (
-                <button className="mx-3 px-3" key={`nav-${index}`} onClick={e => props.navigateTo(index)} >{locationObj.title}</button>
+                <button className={`mx-3 px-3 font-bold ${props.index === index ? 'active' : ''}`} key={`nav-${index}`} onClick={e => props.navigateTo(index)} >{locationObj.title}</button>
               )
             })
           }
         </nav>
       </div>
-    </div>
+    </animated.div>
   );
 }

@@ -1,13 +1,20 @@
 import React from "react";
-import Typical from "react-typical";
-import MacWindow from "./MacWindow";
 
-const subtitleSteps = [
-  "front-end developer",
-  "back-end developer",
-  "linux admin",
-  "gamer",
-];
+const randomQuote = (props) => {
+  let length = props.basicinfo.quotes.length;
+  let random = Math.floor(Math.random() * length);
+  return (
+    <code className="mb-12 max-w-2xl tooltip" data-tip={props.basicinfo.quotes[random].source  + " - " +  props.basicinfo.quotes[random].year}>
+      <blockquote className="text-2xl">
+        {props.basicinfo.quotes[random].quote}
+      </blockquote>
+      <cite className="text-sm text-gray-400 font-bold">
+        {props.basicinfo.quotes[random].author}
+      </cite>
+      <div></div>
+    </code>
+  );
+};
 export default function Splash(props) {
   if (!props.basicinfo) return <div></div>;
 
@@ -22,32 +29,30 @@ export default function Splash(props) {
         }}
         className="flex items-center flex-col justify-center text-white min-w-full"
       >
-        <div className="flex items-center justify-center flex-col ">
-          <img
-            src={
-              "https://icongr.am/devicon/github-original.svg?size=128&color=currentColor"
-            }
-            alt=""
-            width={200}
-          />
-          <h2 className="text-4xl font-sans my-12 text-primary"><span className="text-base-content">My name is </span>{myName}</h2>
-          <MacWindow>
-            <div className="text-left px-4">
-              <span className="text-sm md:text-xl font-mono text-primary">~{myName.trim().replace(' ', "").toLowerCase()} -&gt; </span>
-              <Typical
-                className="text-sm md:text-xl font-mono font-thin text-base-content"
-                wrapper="span"
-                loop={50}
-                steps={subtitleSteps
-                  .map((title) => [title, 2800])
-                  .flat()}
-              ></Typical>
-            </div>
-          </MacWindow>
+        <div className="flex items-center justify-center flex-col  my-12">
+          <h2 className="text-4xl font-extrabold font-sans text-primary">
+            <span className="text-base-content">My name is </span>
+            {myName}
+          </h2>
+          <p className="text-lg font-bold text-gray-400 mt-2">
+            and I'm a <span className="">web developer</span>
+          </p>
+          
         </div>
+        {randomQuote(props)}
         <div id="splash_control" className="mt-16">
-          <button className="btn btn-primary shadow-md">About Jake</button>
-          <button class="btn btn-outline btn-secondary ml-4 ">Contact</button>
+          <button
+            className="btn btn-primary shadow-md"
+            onClick={(e) => props.navigateTo(1)}
+          >
+            About Jake
+          </button>
+          <button
+            class="btn btn-outline btn-secondary ml-4 "
+            onClick={(e) => props.navigateTo(3)}
+          >
+            Contact
+          </button>
         </div>
       </header>
     </div>

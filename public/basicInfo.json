@@ -22,5 +22,48 @@
         "NodeJS",
         "MySQL",
         "Nginx"
+    ],
+    "social_links":[
+        {
+            "title": "Github",
+            "href": "https://github.com/jakermate"
+        },
+        {
+            "title": "Linkedin",
+            "href": "https://linkedin.com/in/jakermiller"
+        }
+
+    ],
+    "quotes": [
+        {
+            "quote": "By Grabthar’s hammer, by the suns of Worvan, you shall be avenged.",
+            "author": "Convention Attendee" ,
+            "source": "Galaxy Quest",
+            "year": 1999
+        },
+        {
+            "quote": "I've seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion. I watched C-beams glitter in the dark near the Tannhäuser Gate. All those moments will be lost in time, like tears in rain. Time to die.",
+            "author": "Roy Batty",
+            "source": "Blade Runner",
+            "year": 1982
+        },
+        {
+            "quote": "Leloo Dallas multipass.",
+            "author": "Leloo",
+            "source": "The Fifth Element",
+            "year": 1995
+        },
+        {
+            "quote": "You’re going to need a bigger boat.",
+            "author": "Sheriff Brody",
+            "source": "Jaws",
+            "year": 1975
+        },
+        {
+            "quote": "Khaaaaaaaaan!",
+            "author": "Captain James Tiberius Kirk",
+            "source": "Star Trek: The Wrath of Khan",
+            "year": 1982
+        }
     ]
 }
