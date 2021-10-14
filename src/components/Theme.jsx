@@ -48,7 +48,7 @@ export default function Theme() {
                 themeMap.map((themeobj, indx) => {
                     return(
                         <div className="tooltip" data-tip={themeobj.title} data-theme={themeobj.string}>
-                            <button id={`theme_select_${themeobj.string}`} className="btn btn-primary btn-circle btn-xs mx-2 shadow-md theme_button" data-theme={themeobj.string} onClick={(e) => changeTheme(e)}></button>
+                            <button id={`theme_select_${themeobj.string}`} className="btn btn-primary opacity-20 hover:opacity-100 btn-circle btn-xs mx-2 shadow-md theme_button" data-theme={themeobj.string} onClick={(e) => changeTheme(e)}></button>
                         </div>
 
                     )

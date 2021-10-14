@@ -4,8 +4,19 @@ const randomQuote = (props) => {
   let length = props.basicinfo.quotes.length;
   let random = Math.floor(Math.random() * length);
   return (
-    <code className="mb-12 max-w-2xl tooltip" data-tip={props.basicinfo.quotes[random].source  + " - " +  props.basicinfo.quotes[random].year}>
-      <blockquote className="text-2xl">
+    <code
+      className="max-w-2xl tooltip absolute"
+      style={{
+        bottom: "0rem",
+        marginBottom: '6rem'
+      }}
+      data-tip={
+        props.basicinfo.quotes[random].source +
+        " - " +
+        props.basicinfo.quotes[random].year
+      }
+    >
+      <blockquote className="text-lg md:text-xl xl:text-2xl">
         {props.basicinfo.quotes[random].quote}
       </blockquote>
       <cite className="text-sm text-gray-400 font-bold">
@@ -37,10 +48,8 @@ export default function Splash(props) {
           <p className="text-lg font-bold text-gray-400 mt-2">
             and I'm a <span className="">web developer</span>
           </p>
-          
         </div>
-        {randomQuote(props)}
-        <div id="splash_control" className="mt-16">
+        <div id="splash_control" className="">
           <button
             className="btn btn-primary shadow-md"
             onClick={(e) => props.navigateTo(1)}
@@ -55,6 +64,7 @@ export default function Splash(props) {
           </button>
         </div>
       </header>
+      {randomQuote(props)}
     </div>
   );
 }
